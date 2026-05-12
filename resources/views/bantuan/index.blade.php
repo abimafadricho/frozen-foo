@@ -87,22 +87,22 @@
       <h3>👤 Informasi Developer</h3>
       <div class="developer-info">
         <div class="dev-item">
-          <span>Nama</span><span>: [Nama Anda]</span>
+          <span>Nama</span><span>: Abima Fadricho Syuhadak</span>
         </div>
         <div class="dev-item">
-          <span>NIM</span><span>: [NIM Anda]</span>
+          <span>NIM</span><span>: 2241720025</span>
         </div>
         <div class="dev-item">
-          <span>Kelas</span><span>: [Kelas Anda]</span>
+          <span>Kelas</span><span>: TI-4F</span>
         </div>
         <div class="dev-item">
-          <span>Telepon</span><span>: [No. HP Anda]</span>
+          <span>Telepon</span><span>: 081357706168</span>
         </div>
         <div class="dev-item">
-          <span>Alamat</span><span>: [Alamat Anda]</span>
+          <span>Alamat</span><span>: Malang</span>
         </div>
         <div class="dev-item">
-          <span>Email</span><span>: [Email Anda]</span>
+          <span>Email</span><span>: abimafadricho.29@gmail.com</span>
         </div>
       </div>
     </div>

@@ -45,10 +45,11 @@
           class="input-search"
           placeholder="Cari nama barang..."
           value="{{ request('search') }}"
+          id="searchInput"
         >
         <button type="submit" class="btn-search">Cari</button>
       </div>
-      <select name="kategori" class="select-filter" onchange="this.form.submit()">
+      <select name="kategori" class="select-filter" id="filterKategori" onchange="this.form.submit()">
         <option value="">Semua kategori</option>
         @foreach($kategoris as $kat)
           <option value="{{ $kat->id }}" @selected(request('kategori') == $kat->id)>
@@ -171,6 +172,37 @@
 
 @section('scripts')
 <script>
+ // ===== LIVE SEARCH =====
+  document.getElementById('searchInput').addEventListener('input', function() {
+    filterTable();
+  });
+
+  document.getElementById('filterKategori').addEventListener('change', function() {
+    filterTable();
+  });
+
+  function filterTable() {
+    const keyword  = document.getElementById('searchInput').value.toLowerCase().trim();
+    const kategori = document.getElementById('filterKategori').value.toLowerCase().trim();
+    const rows     = document.querySelectorAll('tbody tr');
+
+    rows.forEach(row => {
+      const namaCell     = row.querySelector('td:nth-child(1)');
+      const kategoriCell = row.querySelector('td:nth-child(2)');
+
+      if (!namaCell) return; // skip empty state row
+
+      const nama        = namaCell.textContent.toLowerCase();
+      const katText     = kategoriCell.textContent.toLowerCase();
+
+      const matchNama     = nama.includes(keyword);
+      const matchKategori = kategori === '' || katText.includes(kategori);
+
+      row.style.display = (matchNama && matchKategori) ? '' : 'none';
+    });
+  }
+
+  // ===== MODAL HAPUS =====
   function confirmDelete(id, name) {
     document.getElementById('modalDesc').innerHTML =
       'Data <strong>' + name + '</strong> akan dihapus secara permanen dari sistem. Tindakan ini tidak dapat dibatalkan.';
